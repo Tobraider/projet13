@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Profile
 
+
 # Create your views here.
 def index(request):
     profiles_list = Profile.objects.all()

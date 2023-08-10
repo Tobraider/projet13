@@ -9,3 +9,5 @@ urlpatterns = [
     path('profiles/', include('profiles.urls')),
     path('admin/', admin.site.urls),
 ]
+
+handler404 = views.custom_404_view
