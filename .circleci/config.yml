@@ -2,9 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: python:3.10.1
+      - image: docker:latest
     steps:
       - checkout
+      - run: apt -y install python3.10
       - run: pip install -r requirements.txt
       - run: python manage.py migrate
       - run: pytest --cov --cov-fail-under=80
@@ -13,12 +14,6 @@ jobs:
           name: Build and push Docker image
           command: |
             if [ "$CIRCLE_BRANCH" == "main" ]; then
-              apt update
-              apt -y upgrade
-              apt -y install apt-utils
-              curl -fsSL https://get.docker.com -o get-docker.sh
-              sh get-docker.sh
-              docker --version
               docker build -t your-image-name:$CIRCLE_SHA1 .
               docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
               docker push your-image-name:$CIRCLE_SHA1
