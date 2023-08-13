@@ -13,9 +13,7 @@ jobs:
           name: Build and push Docker image
           command: |
             if [ "$CIRCLE_BRANCH" == "main" ]; then
-              curl -fsSL https://get.docker.com -o get-docker.sh
-              sh get-docker.sh
-              docker --version
+              pip install docker-compose
               docker build -t your-image-name:$CIRCLE_SHA1 .
               docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
               docker push your-image-name:$CIRCLE_SHA1
