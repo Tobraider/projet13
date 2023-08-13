@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.10.1-node-browsers-legacy
+      - image: circleci/python:3.10.1
     steps:
       - checkout
       - run: pip install -r requirements.txt
