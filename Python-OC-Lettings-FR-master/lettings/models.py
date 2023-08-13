@@ -4,6 +4,8 @@ from django.core.validators import MaxValueValidator, MinLengthValidator
 
 # Create your models here.
 class Address(models.Model):
+    """ Modele d'address les champs sont :
+    number, street, city, state, zip_code, country_iso_code """
     number = models.PositiveIntegerField(validators=[MaxValueValidator(9999)])
     street = models.CharField(max_length=64)
     city = models.CharField(max_length=64)
@@ -14,10 +16,19 @@ class Address(models.Model):
     def __str__(self):
         return f'{self.number} {self.street}'
 
+    class Meta:
+        verbose_name = "Address"
+        verbose_name_plural = "Address"
+
 
 class Letting(models.Model):
+    """ Modele letting les champs sont : title, address """
     title = models.CharField(max_length=256)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = "Letting"
+        verbose_name_plural = "Lettings"

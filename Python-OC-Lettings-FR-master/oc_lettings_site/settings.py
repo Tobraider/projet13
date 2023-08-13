@@ -2,6 +2,28 @@ import os
 
 from pathlib import Path
 
+import logging
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Initialisation de sentry
+sentry_sdk.init(
+    dsn=os.getenv('DNS_SENTRY'),
+    integrations=[DjangoIntegration(),LoggingIntegration(level=logging.WARNING)],
+    send_default_pii=True,
+    traces_sample_rate=1.0,
+    profiles_sample_rate=1.0,
+)
+
+# Initialisation de logging
+logging.basicConfig(level=logging.WARNING)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,11 +32,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
@@ -92,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

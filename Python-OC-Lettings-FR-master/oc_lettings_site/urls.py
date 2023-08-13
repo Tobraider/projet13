@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
 
+# from django.conf import settings
+# from django.conf.urls.static import static
+
 from . import views
 
 urlpatterns = [
@@ -11,3 +14,4 @@ urlpatterns = [
 ]
 
 handler404 = views.custom_404_view
+handler500 = views.custom_500_view

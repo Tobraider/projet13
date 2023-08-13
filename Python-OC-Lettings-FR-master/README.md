@@ -32,11 +32,17 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
 - Pour désactiver l'environnement, `deactivate`
 
-#### Exécuter le site
+#### Initialiser l'environnement
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
 - `pip install --requirement requirements.txt`
+- Creer un fichier .env ou initialiser les varaible dans l'environnement directement les variable suivante : 
+  - DNS_SENTRY=dnsDuSentry
+  - SECRET_KEY=leCleDuProjetDjango
+
+#### Exécuter le site
+
 - `python manage.py runserver`
 - Aller sur `http://localhost:8000` dans un navigateur.
 - Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
