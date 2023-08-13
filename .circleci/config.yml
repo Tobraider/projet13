@@ -2,15 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: python:3.10
+      - image: circleci/python:3.10.1-node-browsers-legacy
     steps:
       - checkout
       - run: pip install -r requirements.txt
       - run: python manage.py migrate
       - run: pytest --cov --cov-fail-under=80
       - run: flake8
-      - setup_remote_docker:
-          version: 20.10.23
       - run:
           name: Build and push Docker image
           command: |
