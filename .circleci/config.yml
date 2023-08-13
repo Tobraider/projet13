@@ -7,18 +7,19 @@ jobs:
       - checkout
       - run: pip install -r requirements.txt
       - run: python manage.py migrate
-      - run: pytest --cov-fail-under=80
+      - run: pytest --cov --cov-fail-under=80
       - run: flake8
       - run:
           name: Build and push Docker image
           command: |
             if [ "$CIRCLE_BRANCH" == "main" ]; then
-              # Construction et déploiement spécifiques à la branche main
+              curl -fsSL https://get.docker.com -o get-docker.sh
+              sh get-docker.sh
+              docker --version
               docker build -t your-image-name:$CIRCLE_SHA1 .
               docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
               docker push your-image-name:$CIRCLE_SHA1
             else
-              # Actions à effectuer pour les autres branches
               echo "Skipping Docker build and push for branch $CIRCLE_BRANCH."
             fi
 
