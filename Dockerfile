@@ -8,6 +8,12 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+ARG ARG_DNS_SENTRY=''
+ARG ARG_SECRET_KEY=''
+
+ENV DNS_SENTRY=$ARG_DNS_SENTRY
+ENV SECRET_KEY=$ARG_SECRET_KEY
+
 RUN python manage.py migrate
 RUN python manage.py collectstatic
 

@@ -16,7 +16,7 @@ jobs:
           name: Build and push Docker image
           command: |
             if [ "$CIRCLE_BRANCH" == "main" ]; then
-              docker build -t your-image-name:$CIRCLE_SHA1 .
+              docker build --build-arg ARG_DNS_SENTRY=$DNS_SENTRY --build-arg ARG_SECRET_KEY=$SECRET_KEY -t your-image-name:$CIRCLE_SHA1 .
               docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
               docker push your-image-name:$CIRCLE_SHA1
             else
