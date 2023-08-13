@@ -7,7 +7,6 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,7 +14,7 @@ load_dotenv()
 # Initialisation de sentry
 sentry_sdk.init(
     dsn=os.getenv('DNS_SENTRY'),
-    integrations=[DjangoIntegration(),LoggingIntegration(level=logging.WARNING)],
+    integrations=[DjangoIntegration(), LoggingIntegration(level=logging.WARNING)],
     send_default_pii=True,
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
@@ -35,8 +34,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
