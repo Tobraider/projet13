@@ -5,6 +5,7 @@ jobs:
       - image: python:3.10
     steps:
       - checkout
+      - run: pip install --upgrade pip
       - run: pip install -r requirements.txt
       - run: python manage.py migrate
       - run: pytest --cov --cov-fail-under=80
