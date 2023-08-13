@@ -15,7 +15,10 @@ jobs:
             if [ "$CIRCLE_BRANCH" == "main" ]; then
               apt update
               apt -y upgrade
-              apt -y install docker-ce
+              apt -y install apt-utils
+              curl -fsSL https://get.docker.com -o get-docker.sh
+              sh get-docker.sh
+              docker --version
               docker build -t your-image-name:$CIRCLE_SHA1 .
               docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
               docker push your-image-name:$CIRCLE_SHA1
