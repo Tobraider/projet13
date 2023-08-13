@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: cd Python-OC-Lettings-FR-master
-      - run: pip install -r requirements.txt
+      - run: pip install -r ./requirements.txt
       - run: python manage.py migrate
       - run: pytest --cov=myapp --cov-fail-under=80 --cov-report=term-missing
       - run: flake8
