@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.10.1
+      - image: python:3.10.1
     steps:
       - checkout
       - run: pip install -r requirements.txt
@@ -13,6 +13,9 @@ jobs:
           name: Build and push Docker image
           command: |
             if [ "$CIRCLE_BRANCH" == "main" ]; then
+              curl -fsSL https://get.docker.com -o get-docker.sh
+              sh get-docker.sh
+              docker --version
               docker build -t your-image-name:$CIRCLE_SHA1 .
               docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
               docker push your-image-name:$CIRCLE_SHA1
