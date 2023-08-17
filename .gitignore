@@ -4,4 +4,3 @@ venv
 **/env/
 .env
 .coverage
-doc

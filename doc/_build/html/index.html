@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Welcome to oc letting site’s documentation! &#8212; Documentation oc letting site </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=3b36ad44"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-oc-letting-site-s-documentation">
+<h1>Welcome to oc letting site’s documentation!<a class="headerlink" href="#welcome-to-oc-letting-site-s-documentation" title="Lien permanent vers cette rubrique">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="description-du-projet">
+<h2>Description du Projet<a class="headerlink" href="#description-du-projet" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Le projet <cite>oc_letting_site</cite> est un site web pour la gestion de locations et de profiles de l’entreprise <cite>Oranges Country Lettings</cite>.</p>
+</section>
+<section id="instructions-d-installation">
+<h2>Instructions d’Installation<a class="headerlink" href="#instructions-d-installation" title="Lien permanent vers cette rubrique">¶</a></h2>
+<ol class="arabic">
+<li><p>Assurez-vous d’avoir Python installé sur votre machine.</p></li>
+<li><p>Créez et activez un environnement virtuel :</p>
+<p>Pour Linux :</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">python -m venv venv</div>
+<div class="line">source venv/bin/activate</div>
+<div class="line">pip install -r requirements.txt</div>
+</div>
+</div></blockquote>
+<p>Pour Windows :</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">python -m venv venv</div>
+<div class="line">.venvScriptsactivate</div>
+<div class="line">pip install -r requirements.txt</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Configurez les variables d’environnement dans un fichier .env ou via des variables d’environnement pour les valeurs suivantes :</p>
+<div class="line-block">
+<div class="line">DNS_SENTRY</div>
+<div class="line">SECRET_KEY</div>
+</div>
+</li>
+</ol>
+</section>
+<section id="demarrage-rapide">
+<h2>Démarrage Rapide<a class="headerlink" href="#demarrage-rapide" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Pour démarrer l’application :</p>
+<div class="line-block">
+<div class="line">Sous Linux :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">python3 manage.py runserver</div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Sous Windows :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">python manage.py runserver</div>
+</div>
+</div></blockquote>
+</section>
+<section id="technologies-et-langages-de-programmation">
+<h2>Technologies et Langages de Programmation<a class="headerlink" href="#technologies-et-langages-de-programmation" title="Lien permanent vers cette rubrique">¶</a></h2>
+<div class="line-block">
+<div class="line">Django 3.0</div>
+<div class="line">SQLite3 (base de données)</div>
+<div class="line">Langage de Programmation : Python</div>
+</div>
+</section>
+<section id="structure-de-la-base-de-donnees-et-modeles-de-donnees">
+<h2>Structure de la Base de Données et Modèles de Données<a class="headerlink" href="#structure-de-la-base-de-donnees-et-modeles-de-donnees" title="Lien permanent vers cette rubrique">¶</a></h2>
+<section id="modele-profile">
+<h3>Modèle Profile<a class="headerlink" href="#modele-profile" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Ce modèle représente les profils d’utilisateurs dans l’application. Il contient des informations sur les utilisateurs et leurs préférences.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Champs</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>user
+favorite_city</p></td>
+<td><p>ForeignKey (User)
+CharField</p></td>
+<td><p>L’utilisateur associé à ce profil
+Ville préférée de l’utilisateur</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="modele-address">
+<h3>Modèle Address<a class="headerlink" href="#modele-address" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Ce modèle représente des adresses, qui peuvent être associées à d’autres modèles tels que Letting.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Champs</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>number
+street
+city
+state
+zip_code
+country_iso_code</p></td>
+<td colspan="2"><p>PositiveIntegerField | Numéro de rue
+CharField             | Nom de la rue
+CharField             | Ville
+CharField             | État (sigle de deux caractères)
+PositiveIntegerField | Code postal
+CharField             | Code ISO du pays (trois lettres)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="modele-letting">
+<h3>Modèle Letting<a class="headerlink" href="#modele-letting" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Ce modèle représente les éléments de location dans l’application.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Champs</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>title
+address</p></td>
+<td><p>CharField
+ForeignKey (Address)</p></td>
+<td><p>Titre de la location
+Adresse associée à la location</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="interfaces-de-programmation">
+<h2>Interfaces de Programmation<a class="headerlink" href="#interfaces-de-programmation" title="Lien permanent vers cette rubrique">¶</a></h2>
+<section id="vues-views">
+<h3>Vues (Views) :<a class="headerlink" href="#vues-views" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Les vues de l’application <cite>oc_letting_site</cite> gèrent la logique de traitement des requêtes HTTP et génèrent les réponses appropriées. Voici quelques-unes des vues disponibles :</p>
+<ul class="simple">
+<li><p><cite>index</cite>: La vue principale qui affiche la page d’accueil du site.</p></li>
+<li><p><cite>profile</cite>: Affiche les détails d’un profil utilisateur.</p></li>
+<li><p><cite>letting</cite>: Affiche les détails d’une location.</p></li>
+</ul>
+<p>Pour utiliser ces vues, référez-vous aux URLs appropriées.</p>
+</section>
+<section id="urls-url-patterns">
+<h3>URLs (URL Patterns) :<a class="headerlink" href="#urls-url-patterns" title="Lien permanent vers cette rubrique">¶</a></h3>
+<p>Les URLs de votre application déterminent la manière dont les vues sont accessibles. Voici quelques exemples d’URLs associées aux vues mentionnées précédemment :</p>
+<ul class="simple">
+<li><p><cite>/</cite> : Correspond à la vue <cite>index</cite>.</p></li>
+<li><p><cite>/profiles/</cite> : Affiche la liste des <cite>profiles</cite>.</p></li>
+<li><p><cite>/lettings/</cite> : Affiche la liste des <cite>letting</cite>.</p></li>
+<li><p><cite>/profiles/&lt;str:username&gt;/</cite> : Correspond à la vue <cite>profile</cite>.</p></li>
+<li><p><cite>/lettings/&lt;int:letting_id&gt;/</cite> : Correspond à la vue <cite>letting</cite>.</p></li>
+</ul>
+<p>Assurez-vous de consulter les fichiers <cite>urls.py</cite> dans les dossiers des applications pour plus de détails sur les configurations d’URLs.</p>
+</section>
+</section>
+<section id="guide-d-utilisation">
+<h2>Guide d’Utilisation<a class="headerlink" href="#guide-d-utilisation" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Visitez la page d’accueil pour parcourir les profils et les lettings.
+Consultez les profils en cliquant sur leur nom d’utilisateur.
+Visualisez les informations détaillées d’un letting en cliquant sur son titre.</p>
+</section>
+<section id="procedures-de-deploiement-et-gestion">
+<h2>Procédures de Déploiement et Gestion<a class="headerlink" href="#procedures-de-deploiement-et-gestion" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Pour déployer et gérer l’application <cite>oc_letting_site</cite> en production, vous pouvez suivre les étapes suivantes :</p>
+<ol class="arabic">
+<li><p><strong>Prérequis :</strong></p>
+<p>Assurez-vous d’avoir les éléments suivants en place avant de commencer le déploiement :</p>
+<ul class="simple">
+<li><p>Un environnement avec Docker installé.</p></li>
+<li><p>Un compte Docker Hub avec les informations d’identification nécessaires.</p></li>
+</ul>
+</li>
+<li><p><strong>Déploiement avec CircleCI :</strong></p>
+<ul class="simple">
+<li><p>Lorsque vous poussez des changements sur la branche <cite>main</cite> de votre référentiel GitHub, CircleCI est configuré pour déclencher automatiquement le processus de déploiement.</p></li>
+<li><p>Dans le fichier <cite>.circleci/config.yml</cite>, sont défini les étapes pour créer une image Docker, la publier sur Docker Hub et ensuite la déployer sur le serveur. Ce processus inclut :</p>
+<ul>
+<li><p>Installation des dépendances.</p></li>
+<li><p>Exécution des tests et de la vérification de la couverture.</p></li>
+<li><p>Construction et publication de l’image Docker si les tests réussissent.</p></li>
+<li><p>Mise en place de Nginx comme reverse proxy pour votre application Django.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Serveur de Production :</strong></p>
+<ul>
+<li><p>Sur le serveur de production, assurez-vous d’avoir Docker installé.</p></li>
+<li><dl>
+<dt>Créez un réseau Docker pour permettre aux conteneurs de communiquer :</dt><dd><div class="line-block">
+<div class="line">docker network create my_network</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Utilisez Docker Compose pour déployer vos services :</dt><dd><div class="line-block">
+<div class="line">docker-compose up -d</div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p><strong>Gestion des Mises à Jour :</strong></p>
+<ul>
+<li><p>Pour mettre à jour votre application, suivez ces étapes :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Poussez vos modifications sur la branche <cite>main</cite> de votre référentiel GitHub.</p></li>
+<li><p>CircleCI déclenchera le processus de déploiement comme précédemment expliqué.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>Gestion des Conteneurs :</strong></p>
+<ul>
+<li><p>Utilisez le script <cite>startApp.sh</cite> present sur le serveur en l’appelant comme ceci :</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">startApp.sh</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Pour charger une ancienne image il suffit d’ajouter le tag de l’image en parametre comme ceci :</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">startApp.sh tagImage</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Pour stopper l’application appelez ce script :</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">stopApp.sh</div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Vous n’avez pas besoin de stopper l’appication avant de la demarrer, le script le fait automatiquement</p>
+</li>
+</ol>
+<p>Ces étapes fournissent un aperçu général du processus de déploiement et de gestion de votre application <cite>oc_letting_site</cite> en production.</p>
+</section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Documentation Django : <a class="reference external" href="https://docs.djangoproject.com/">https://docs.djangoproject.com/</a></p>
+</section>
+<section id="references-de-packages">
+<h2>Références de Packages<a class="headerlink" href="#references-de-packages" title="Lien permanent vers cette rubrique">¶</a></h2>
+<div class="line-block">
+<div class="line">Django : 3.0</div>
+<div class="line">flake8 : 3.7.0</div>
+<div class="line">pytest-django : 3.9.0</div>
+<div class="line">six : 1.16.0</div>
+<div class="line">pytest-cov : 4.1.0</div>
+<div class="line">sentry-sdk : 1.29.2</div>
+<div class="line">python-dotenv : 1.0.0</div>
+<div class="line">Sphinx : 7.1.2</div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">oc letting site</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Tobie.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
