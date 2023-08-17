@@ -81,3 +81,40 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+### Mise en production
+
+Suivez ces étapes pour déployer l'application `oc_letting_site` en production :
+
+1. **Déploiement avec CircleCI :**
+   - À chaque push sur la branche `main` de votre référentiel GitHub, CircleCI est configuré pour déclencher le processus de déploiement automatique.
+
+2. **Serveur de Production :**
+   - Assurez-vous que Docker est installé sur votre serveur de production.
+   - Créez un réseau Docker pour les conteneurs à l'aide de la commande `docker network create my_network`.
+
+3. **Utilisez Docker Compose pour le Déploiement :**
+   - Utilisez le fichier `docker-compose.yml` pour déployer vos services en utilisant `docker-compose up -d`.
+   - Les services incluent l'application Django et le serveur Nginx en tant que reverse proxy.
+
+4. **Mises à Jour et Gestion :**
+   - Pour mettre à jour l'application, poussez vos modifications sur la branche `main` de votre référentiel GitHub.
+   - CircleCI gérera automatiquement le processus de déploiement.
+
+5. **Gestion des Conteneurs :**
+
+   - Utilisez le script `startApp.sh` present sur le serveur en l'appelant comme ceci :
+
+      `startApp.sh`
+   
+   - Pour charger une ancienne image il suffit d'ajouter le tag de l'image en parametre comme ceci : 
+
+      `startApp.sh tagImage`
+
+   - Pour stopper l'application appelez ce script : 
+
+      `stopApp.sh`
+
+   Vous n'avez pas besoin de stopper l'appication avant de la demarrer, le script le fait automatiquement
+
+Ces étapes sont une description des étapes pour déployer et gérer l'application `oc_letting_site` en production.
