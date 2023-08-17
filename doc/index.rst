@@ -8,8 +8,6 @@ Bienvenue sur la documentaion du projet oc letting site !
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
 
 Description du Projet
 ---------------------
