@@ -16,9 +16,14 @@ jobs:
           name: Build and push Docker image
           command: |
             if [ "$CIRCLE_BRANCH" == "main" ]; then
-              docker build --build-arg ARG_DNS_SENTRY=$DNS_SENTRY --build-arg ARG_SECRET_KEY=$SECRET_KEY -t tobraider/projet13:$CIRCLE_SHA1 .
+              apt install -y openssh-client
+              echo $KEY_SSH | base64 -d > ~/.ssh/id_rsa
+              chmod 600 ~/.ssh/id_rsa
+              ssh-add ~/.ssh/id_rsa
+              docker build --build-arg ARG_DNS_SENTRY=$DNS_SENTRY --build-arg ARG_SECRET_KEY=$SECRET_KEY --build-arg DEBUG=$DEBUG --build-arg IPPORD=$IPPORD -t tobraider/projet13:$CIRCLE_SHA1 .
               docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
               docker push tobraider/projet13:$CIRCLE_SHA1
+              ssh tobie@$IPPROD "source startapp $CIRCLE_SHA1"
             else
               echo "Skipping Docker build and push for branch $CIRCLE_BRANCH."
             fi

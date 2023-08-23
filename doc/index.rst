@@ -181,11 +181,11 @@ Pour déployer et gérer l'application `oc_letting_site` en production, vous pou
 
    - Utilisez le script `startApp.sh` present sur le serveur en l'appelant comme ceci :
 
-      | startApp.sh
+      | source ./startApp.sh
    
    - Pour charger une ancienne image il suffit d'ajouter le tag de l'image en parametre comme ceci : 
 
-      | startApp.sh tagImage
+      | source ./startApp.sh tagImage
 
    - Pour stopper l'application appelez ce script : 
 
