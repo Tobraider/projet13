@@ -23,7 +23,7 @@ jobs:
               docker build --build-arg ARG_DNS_SENTRY=$DNS_SENTRY --build-arg ARG_SECRET_KEY=$SECRET_KEY --build-arg DEBUG=$DEBUG --build-arg IPPORD=$IPPORD -t tobraider/projet13:$CIRCLE_SHA1 .
               docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
               docker push tobraider/projet13:$CIRCLE_SHA1
-              ssh -v tobie@$IPPROD "source startapp $CIRCLE_SHA1"
+              ssh -v -p 18740 tobie@51.159.76.154 "source startapp $CIRCLE_SHA1"
             else
               echo "Skipping Docker build and push for branch $CIRCLE_BRANCH."
             fi
