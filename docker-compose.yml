@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  django_app:
+    image: tobraider/projet13:b7d9d67c3e4f2bc41713b93cd8a9b6fe1d03ad0b
+    volumes:
+      - e:\staticfiles:/app/staticfiles
+    networks:
+      - my_network
+
+  nginx:
+    image: tobraider/nginxprojet13:1.0
+    volumes:
+      - E:\staticfiles:/django_app/staticfiles:ro
+    ports:
+      - "80:80"
+    networks:
+      - my_network
+
+networks:
+  my_network:
