@@ -40,6 +40,8 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - Creer un fichier .env ou initialiser les varaible dans l'environnement directement les variable suivante : 
   - DNS_SENTRY=dnsDuSentry
   - SECRET_KEY=leCleDuProjetDjango
+  - DEBUG=truePourVraiOu''PourFalse
+  - IPPORD=ipOuDnsProduction
 
 #### Exécuter le site
 

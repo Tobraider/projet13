@@ -37,6 +37,8 @@ Instructions d'Installation
 
    | DNS_SENTRY
    | SECRET_KEY
+   | DEBUG
+   | IPPROD
 
 Démarrage Rapide
 ------------------
